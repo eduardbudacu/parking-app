@@ -44,8 +44,35 @@ Rather than using class constants, enums can be implemented. Relative effort - S
 * Investigate the deprecation warning when running tests with dot directory. This doesn't reproduce when running on tests/ or individual test cases
 
 ## How to run the program
+
+Clone repo
+```
+git clone https://github.com/eduardbudacu/parking-app.git
+```
+
+```
+cd parking-app
+```
+
+Start containers
+```
+docker compose up -d
+```
+Install dependencies 
+```
+docker compose exec app composer install
+```
+Notice: sometimes on my local machine some of the dependencies of phpunit were not extracted, so I had run the command twice
+
+Run tests
+```
+docker compose exec app vendor/bin/phpunit .
+```
+Execute program
 ```bash
 docker compose exec app php console.php app:parking
 ```
 
 ## Demo
+
+![demo](./docs/demo.gif)
