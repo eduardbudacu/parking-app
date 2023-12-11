@@ -15,7 +15,6 @@ use Temperworks\Codechallenge\Domain\Garage;
     name: 'app:parking',
     description: 'Parking management system',
 )]
-
 class Cli extends Command
 {
     public function __construct(protected Garage $garage)
@@ -27,10 +26,12 @@ class Cli extends Command
     {
         $this->setup($input, $output);
         $this->parkVehicles($input, $output);
+
         return Command::SUCCESS;
     }
 
-    protected function parkVehicles(InputInterface $input, OutputInterface $output) {
+    protected function parkVehicles(InputInterface $input, OutputInterface $output)
+    {
         $helper = $this->getHelper('question');
         do {
             $question = new ChoiceQuestion(
@@ -66,6 +67,7 @@ class Cli extends Command
                         'The answer must be a number.'
                     );
                 }
+
                 return $answer;
             });
             $capacity = $helper->ask($input, $output, $question);
